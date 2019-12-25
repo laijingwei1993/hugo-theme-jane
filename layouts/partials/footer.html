@@ -1,8 +1,18 @@
 <div class="icon-links">
-  {{ partial "social_links.html" . }} 
+  {{ partial "social_links.html" . }}
 </div>
 
 <div class="copyright">
+  <span class="copyright-year">
+    <span class="power-by">
+      友情链接：<a href='https://ww4k.com' style="color:#939393">徐庆业</a>
+    </span>
+    <span class="division">|</span>
+    <span class="theme-info">
+      <a href='https://www.wuchuheng.com' style="color:#939393">吴楚衡</a>
+    </span>
+  </span>
+
   <span class="power-by">
     Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
@@ -31,6 +41,19 @@
         {{ end }}
       </span>
     {{- end -}}
+  </span>
+
+  <span class="copyright-year">
+    <span class="theme-info">
+      <img src="{{ "beian.png" | relURL }}"/>
+      <a href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44132202100144' style="height:20px;line-height:20px;color:#939393">粤公网安备 44132202100144号</a>
+    </span>
+  </span>
+
+  <span class="copyright-year">
+    <span class="power-by">
+      <a href='http://beian.miit.gov.cn' style="color:#939393">粤ICP备18068494号</a>
+    </span>
   </span>
 
   <!-- Counter busuanzi -->
