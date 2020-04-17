@@ -43,11 +43,29 @@
   <div class="post-content">
     {{ if .Site.Params.homeFullContent }}
     <div class="post-summary">
-      {{ .Content }}
+      {{ $regex := "(?i)src\\s*=\\s*\"([^\"]*(!|png|jpg|jpeg|gif|bmp|svg))\"" }}
+      {{ $img := findRE $regex .Content }}
+
+      {{ if gt (len $img) 0 }}
+        {{ $placeholder := "/image/loading.gif" | relURL }}
+        {{ $replacement := print "src=\"" $placeholder "\" data-src=\"$1\" class=\"lazyload\"" }}
+        {{ .Content | replaceRE $regex $replacement | safeHTML }}
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
     </div>
     {{ else }}
     <div class="post-summary">
-      {{ .Summary }}
+      {{ $regex := "(?i)src\\s*=\\s*\"([^\"]*(!|png|jpg|jpeg|gif|bmp|svg))\"" }}
+      {{ $img := findRE $regex .Summary }}
+
+      {{ if gt (len $img) 0 }}
+        {{ $placeholder := "/image/loading.gif" | relURL }}
+        {{ $replacement := print "src=\"" $placeholder "\" data-src=\"$1\" class=\"lazyload\"" }}
+        {{ .Summary | replaceRE $regex $replacement | safeHTML }}
+      {{ else }}
+        {{ .Summary }}
+      {{ end }}
     </div>
     <div class="read-more">
       <a href="{{ .RelPermalink }}" class="read-more-link">{{ i18n "readmore" }}</a>

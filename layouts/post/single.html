@@ -46,7 +46,16 @@
 
     <!-- Content -->
     <div class="post-content">
-      {{ .Content }}
+      {{ $regex := "(?i)src\\s*=\\s*\"([^\"]*(!|png|jpg|jpeg|gif|bmp|svg))\"" }}
+      {{ $img := findRE $regex .Content }}
+
+      {{ if gt (len $img) 0 }}
+        {{ $placeholder := "/image/loading.gif" | relURL }}
+        {{ $replacement := print "src=\"" $placeholder "\" data-src=\"$1\" class=\"lazyload\"" }}
+        {{ .Content | replaceRE $regex $replacement | safeHTML }}
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
     </div>
 
     <!-- Copyright -->
