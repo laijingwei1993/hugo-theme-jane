@@ -10,9 +10,13 @@
   <script type="text/javascript" src="{{ "lib/slideout/slideout-1.0.1.min.js" | relURL }}"></script>
 {{- end }}
 
+<link href="https://cdn.bootcss.com/tachyons/4.11.1/tachyons.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.bootcss.com/lazysizes/5.2.0/lazysizes.min.js"></script>
 <script type="text/javascript" src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 <script type="text/javascript" src="{{ "/js/share.js" | relURL }}"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/fuse.js/5.1.0/fuse.min.js"></script>
+<script type="text/javascript" src="{{ "/js/search.js" | relURL }}"></script>
 
 <!-- Jane theme main js -->
 {{ $jsTemplate := resources.Get "js/main.js" }}
@@ -250,6 +254,7 @@
   <script>
     $("#openSearch, #openSearchMobile").click(function(){
       $(".modal-dialog").addClass("visible");
+      $("#searchInput").focus();
     });
 
     $("#closeSearch").click(function(){

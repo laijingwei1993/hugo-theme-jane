@@ -8,25 +8,20 @@
           {{- if $.Site.Params.search.google.title -}}
             {{ $.Site.Params.search.google.title }}
           {{- else -}}
-            Search
+            搜索
           {{- end -}}
         </div>
       </div>
-      <div class="modal-body">
-          <script>
-            (function() {
-              var cx = '{{ .Site.Params.search.google.id }}';
-              var gcse = document.createElement('script');
-              gcse.type = 'text/javascript';
-              gcse.async = true;
-              gcse.src = (document.location.protocol == 'https:' ? 'https:' :
-                  'http:') +
-                '//cse.google.com/cse.js?cx=' + cx;
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(gcse, s);
-            })();
-          </script>
-          <gcse:search></gcse:search>
+      <div id="search" class="modal-body pa3">
+          <div class="flex flex-row justify-between py2">
+            <input id="searchInput" class="w-100 pa2" type="text" v-model="keywords" placeholder="搜索">
+          </div>
+          <div class="pt3">
+            <div v-for="(item,i) in result" :key="i" class="flex flex-column">
+              <a class="dark-blue f5" :href="location.origin + item.item.url" v-text="item.item.title" target="_blank" rel="noopener noreferrer"></a>
+              <p class="f6 ma0 silver w-100" v-html="item.item.description"></p>
+            </div>
+          </div>
       </div>
     </div>
 </div>
