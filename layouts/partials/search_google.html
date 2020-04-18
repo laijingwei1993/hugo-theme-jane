@@ -18,8 +18,8 @@
           </div>
           <div class="pt3">
             <div v-for="(item,i) in result" :key="i" class="flex flex-column">
-              <a class="dark-blue f5" :href="location.origin + item.item.url" v-text="item.item.title" target="_blank" rel="noopener noreferrer"></a>
-              <p class="f6 ma0 silver w-100" v-html="item.item.description"></p>
+              <a class="link underline-hover blue hover-dark-blue f5" :href="location.origin + item.item.url" v-text="item.item.title" target="_blank" rel="noopener noreferrer"></a>
+              <p class="f6 ma0 silver hover-gray w-100" v-html="item.item.description"></p>
             </div>
           </div>
       </div>
