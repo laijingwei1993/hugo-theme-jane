@@ -16,7 +16,7 @@ $(function () {
     imgUrl: imgUrl
   }
 
-  var url = "http://wechat.laijw.com/jsapi_signature?&url=" + encodeURIComponent(location.href);
+  var url = "https://code.laijw.com/jsapi_signature?&url=" + encodeURIComponent(location.href);
 
   var ua = navigator.userAgent.toLowerCase();
   var isWeixin = ua.indexOf('micromessenger') != -1;
